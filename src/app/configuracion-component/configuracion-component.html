@@ -1,0 +1,23 @@
+<!-- FORMULARIO: solo se muestra si los datos no han sido confirmados -->
+<div *ngIf="!datosConfirmados">
+  <label>Nombre:</label>
+  <input type="text" [(ngModel)]="nombre" (input)="validarFormulario()">
+  <p [style.color]="feedbackNombre.includes('✅') ? 'green' : 'red'">{{ feedbackNombre }}</p>
+
+  <label>Apellido:</label>
+  <input type="text" [(ngModel)]="apellido" (input)="validarFormulario()">
+  <p [style.color]="feedbackApellido.includes('✅') ? 'green' : 'red'">{{ feedbackApellido }}</p>
+
+  <label>Rango máximo:</label>
+  <input type="number" [(ngModel)]="rangoMax" (input)="validarFormulario()">
+  <p [style.color]="feedbackRango.includes('✅') ? 'green' : 'red'">{{ feedbackRango }}</p>
+
+  <label>Número de intentos:</label>
+  <input type="number" [(ngModel)]="intentos" (input)="validarFormulario()">
+  <p [style.color]="feedbackIntentos.includes('✅') ? 'green' : 'red'">{{ feedbackIntentos }}</p>
+
+  <button [disabled]="!formularioValido" (click)="recogerDatos()">Recoger datos</button>
+</div>
+
+<!-- JUEGO: solo se muestra si los datos ya han sido confirmados -->
+<app-juego *ngIf="datosConfirmados" [configuracion]="cfg"></app-juego>

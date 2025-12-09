@@ -1,0 +1,18 @@
+<div *ngIf="configuracion">
+  <!-- Mensaje de bienvenida -->
+  <h2>Ongi Etorri {{ configuracion.nombre }} {{ configuracion.apellido }}</h2>
+
+  <!-- Mostrar intentos restantes -->
+  <p>Intentos restantes: {{ intentosRestantes }}</p>
+
+  <!-- Campo para adivinar el número -->
+  <input type="number" [(ngModel)]="numeroIntento" 
+         [disabled]="partidaFinalizada" 
+         placeholder="Introduce tu número">
+
+  <!-- Botón para enviar -->
+  <button (click)="comprobarNumero()" [disabled]="partidaFinalizada">Enviar</button>
+
+  <!-- Feedback del intento -->
+  <p>{{ feedbackIntento }}</p>
+</div>
